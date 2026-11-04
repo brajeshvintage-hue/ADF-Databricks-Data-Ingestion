@@ -1,0 +1,14 @@
+resources:
+  pipelines:
+    retail_pipeline:
+      name: retail-declarative-lab
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      continuous: false
+      libraries:
+        - file:
+            path: ../pipelines/retail_pipeline.py
+      configuration:
+        lab.source: /Volumes/${var.catalog}/${var.schema}/lab_files/orders
+        lab.cdc_source: ${var.catalog}.${var.schema}.customer_cdc

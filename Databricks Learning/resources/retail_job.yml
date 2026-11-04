@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    retail_names:
+      name: retail-names
+      max_concurrent_runs: 1
+      tasks:
+        - task_key: normalize
+          environment_key: retail_env
+          max_retries: 0
+          python_wheel_task:
+            package_name: retail_de
+            entry_point: retail-demo
+            named_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+      environments:
+        - environment_key: retail_env
+          spec:
+            environment_version: ${var.environment_version}
+            dependencies:
+              - ../dist/*.whl

@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools==75.6.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retail_de"
+version = "0.1.0"
+description = "Hands-on Databricks professional learning project"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+retail-demo = "retail_de.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

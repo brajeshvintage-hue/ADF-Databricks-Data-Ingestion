@@ -1,0 +1,29 @@
+bundle:
+  name: retail-professional-lab
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Existing Unity Catalog catalog with permission to create a lab schema
+  schema:
+    default: de_pro_lab
+  environment_version:
+    description: Serverless jobs environment version available in your workspace
+    default: '2'
+
+artifacts:
+  retail_wheel:
+    type: whl
+    path: .
+    build: python -m build --wheel
+
+targets:
+  dev:
+    default: true
+    mode: development
+  test:
+    mode: development
+    variables:
+      schema: de_pro_lab_test
